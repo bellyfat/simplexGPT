@@ -1,0 +1,7 @@
+python-dotenv
+pydantic
+ollama
+phidata
+rich
+requests
+websockets
