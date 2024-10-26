@@ -3,7 +3,7 @@ import asyncio
 from app.application import SimpleXGPT
 
 async def main():
-    app = SimpleXGPT()
+    app: SimpleXGPT = SimpleXGPT()
     await app.run()
 
 if __name__ == "__main__":

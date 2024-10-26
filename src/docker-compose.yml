@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  simplexgpt:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    container_name: simplexgpt_app
+    environment:
+      - SIMPLEX_CHAT_CLI_URL=ws://simplex-chat:5225
+      - OLLAMA_API_URL=http://ollama:11434/api/generate
+    depends_on:
+      - ollama
+      - simplex-chat
+    volumes:
+      - ./src:/app/src
+    command: [ "python", "/app/src/simplexgpt/main.py" ]
+
+  ollama:
+    image: ollama/ollama:latest
+    container_name: ollama
+    ports:
+      - "11434:11434"
+
+  simplex-chat:
+    build:
+      context: ./simplex-chat-cli
+      dockerfile: Dockerfile
+    container_name: simplex_chat
+    ports:
+      - "5225:5225"
+    volumes:
+      - ./simplex-chat-cli:/app
