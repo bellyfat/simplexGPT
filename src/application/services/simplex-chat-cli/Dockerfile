@@ -21,6 +21,9 @@ RUN wget https://www.openssl.org/source/openssl-1.1.1k.tar.gz \
 # Download and install SimpleX Chat CLI
 RUN curl -o- https://raw.githubusercontent.com/simplex-chat/simplex-chat/stable/install.sh | bash
 
+# Ensure the SimpleX Chat CLI is in the PATH
+ENV PATH="$PATH:$HOME/.local/bin"
+
 WORKDIR /app
 
 
