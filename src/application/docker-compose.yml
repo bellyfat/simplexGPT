@@ -4,7 +4,7 @@ services:
   simplexgpt:
     build: 
       context: .
-      dockerfile: Dockerfile
+      dockerfile: core/simplexgpt/Dockerfile
     container_name: simplexgpt_app
     environment:
       - SIMPLEX_CHAT_CLI_URL=ws://simplex-chat:5225
@@ -24,8 +24,8 @@ services:
 
   simplex-chat:
     build:
-      context: ./simplex-chat-cli
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: services/simplex-chat-cli/Dockerfile
     container_name: simplex_chat
     ports:
       - "5225:5225"
